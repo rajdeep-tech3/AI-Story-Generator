@@ -1,0 +1,450 @@
+/* =========================================================
+   AI STORY GENERATOR - MAGICAL STORYBOOK BACKGROUND
+   ========================================================= */
+
+:root {
+    --purple: #24134f;
+    --deep-purple: #100824;
+    --gold: #f4c76b;
+    --text: #ffffff;
+}
+
+
+/* ---------- Main page ---------- */
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+
+    font-family: "Inter", Arial, sans-serif;
+    color: var(--text);
+
+    overflow-x: hidden;
+
+    /* Story illustration */
+    background-image:
+        linear-gradient(
+            rgba(10, 7, 30, 0.58),
+            rgba(20, 10, 45, 0.72)
+        ),
+        url("https://img.magnific.com/free-vector/cartoon-grandmother-reading-astrophysics-cosmos-space-science-book_33099-135.jpg?semt=ais_test_b&w=740&q=80");
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    position: relative;
+}
+
+
+/* =========================================================
+   DARK MAGICAL OVERLAY
+   Makes the text/card easier to read
+   ========================================================= */
+
+body::before {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(150, 100, 255, 0.30),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 80% 70%,
+            rgba(255, 190, 80, 0.20),
+            transparent 30%
+        );
+
+    pointer-events: none;
+
+    z-index: 0;
+
+    animation: magicalGlow 10s ease-in-out infinite alternate;
+}
+
+
+/* =========================================================
+   FLOATING LIGHT EFFECT
+   ========================================================= */
+
+body::after {
+    content: "✦     ·     ✧       ·       ✦       ·     ✧";
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    color: rgba(255, 230, 160, 0.55);
+
+    font-size: 20px;
+    letter-spacing: 35px;
+    line-height: 120px;
+
+    pointer-events: none;
+
+    z-index: 1;
+
+    animation: floatingStars 18s linear infinite;
+
+    opacity: 0.5;
+}
+
+
+/* =========================================================
+   MAIN CARD
+   Keeps your existing UI above the background
+   ========================================================= */
+
+/* =========================================================
+   MAIN STORY GENERATOR CARD
+   Smaller + positioned toward the right
+   ========================================================= */
+
+.container {
+    position: relative;
+    z-index: 2;
+
+   width: 580px;
+    max-width: 90%;
+
+    margin: 35px 4% 35px auto;
+
+    background: rgba(255, 255, 255, 0.94);
+
+    color: #292044;
+
+    padding: 26px;
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.35),
+        0 0 30px rgba(190, 140, 255, 0.18);
+
+    backdrop-filter: blur(10px);
+
+    animation: cardAppear 0.8s ease-out;
+}
+
+
+/* =========================================================
+   STORYBOOK HEADING
+   ========================================================= */
+
+h1 {
+    font-family: Georgia, "Times New Roman", serif;
+
+    text-align: center;
+
+    color: #30205c;
+
+    font-size: 42px;
+
+    margin-top: 5px;
+
+    text-shadow:
+        0 2px 10px rgba(90, 50, 150, 0.15);
+}
+
+
+/* =========================================================
+   FORM LABELS
+   ========================================================= */
+
+label {
+    display: block;
+
+    margin-top: 18px;
+    margin-bottom: 7px;
+
+    font-weight: 600;
+
+    color: #493a70;
+}
+
+
+/* =========================================================
+   INPUTS & SELECTS
+   ========================================================= */
+
+input,
+select {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 11px 13px;
+
+    margin-bottom: 8px;
+
+    border: 1px solid #ddd4ee;
+
+    border-radius: 10px;
+
+    background: #ffffff;
+
+    color: #30264d;
+
+    font-size: 14px;
+
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+input:focus,
+select:focus {
+    outline: none;
+
+    border-color: #8064c8;
+
+    box-shadow:
+        0 0 0 3px rgba(128, 100, 200, 0.15);
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   BUTTONS
+   Smaller, cleaner buttons
+   ========================================================= */
+
+button {
+    padding: 9px 14px;
+
+    margin-top: 12px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    cursor: pointer;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6346a5,
+            #8b63c7
+        );
+
+    box-shadow:
+        0 5px 15px rgba(83, 55, 145, 0.25);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 20px rgba(83, 55, 145, 0.35);
+}
+
+
+button:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   STORY BOX
+   ========================================================= */
+
+#storyBox {
+    margin-top: 28px;
+
+    padding: 22px;
+
+    min-height: 220px;
+
+    border-radius: 15px;
+
+    border: 1px solid #e2d9f1;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.95),
+            rgba(247, 242, 255, 0.95)
+        );
+
+    color: #30264d;
+
+    white-space: pre-wrap;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.8);
+
+    animation: storyAppear 0.6s ease-out;
+}
+
+
+/* =========================================================
+   TEXT-TO-SPEECH WORD HIGHLIGHT
+   ========================================================= */
+
+.speaking-word {
+    background-color: #ffe066;
+    border-radius: 4px;
+    padding: 0 2px;
+    transition: background-color 0.15s ease;
+}
+
+
+/* =========================================================
+   LOADING
+   ========================================================= */
+
+#loading {
+    color: #7654b5;
+
+    font-weight: bold;
+
+    animation: pulse 1.2s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes magicalGlow {
+
+    0% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+
+    50% {
+        transform: scale(1.08);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+}
+
+
+@keyframes floatingStars {
+
+    0% {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+
+    80% {
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: translateY(-100vh);
+        opacity: 0;
+    }
+}
+
+
+@keyframes cardAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes storyAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes pulse {
+
+    0%, 100% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   MOBILE RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .container {
+        width: auto;
+
+        margin: 20px 12px;
+
+        padding: 20px;
+
+        border-radius: 18px;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    input,
+    select {
+        font-size: 14px;
+    }
+
+    button {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+
+    body {
+        background-position: center;
+    }
+}

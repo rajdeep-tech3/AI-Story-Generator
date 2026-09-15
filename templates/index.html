@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Story Generator</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>📖 AI Story Generator</h1>
+
+        <!-- Genre -->
+        <label for="genre">Genre</label>
+
+        <select id="genre">
+            <option value="Fantasy">Fantasy</option>
+            <option value="Adventure">Adventure</option>
+            <option value="Horror">Horror</option>
+            <option value="Sci-Fi">Sci-Fi</option>
+            <option value="Romance">Romance</option>
+            <option value="Mystery">Mystery</option>
+        </select>
+
+
+        <!-- Characters -->
+        <label for="characters">Characters</label>
+
+        <input
+            type="text"
+            id="characters"
+            placeholder="Example: Dragon, Knight, Princess"
+        >
+
+
+        <!-- Setting -->
+        <label for="setting">Setting</label>
+
+        <input
+            type="text"
+            id="setting"
+            placeholder="Example: Ancient Castle"
+        >
+
+
+        <!-- Story Length -->
+        <label for="length">Story Length</label>
+
+        <select id="length">
+            <option value="Short">Short</option>
+            <option value="Medium">Medium</option>
+            <option value="Long">Long</option>
+        </select>
+
+
+        <!-- Buttons -->
+        <div class="buttons">
+
+            <button onclick="generateStory()">
+                ✨ Generate Story
+            </button>
+
+            <button onclick="generateStory()">
+                🔄 Regenerate Story
+            </button>
+
+            <button onclick="downloadStory()">
+                📥 Download Story
+            </button>
+
+             <button onclick="copyStory()">
+                📋 Copy Story
+            </button>
+
+        </div>
+
+
+        <!-- Loading -->
+        <p id="loading"></p>
+
+
+        <!-- Story -->
+        <div class="story-section">
+
+            <h2>📖 Your Story</h2>
+
+            <div id="storyBox">
+                Your generated story will appear here.
+            </div>
+
+            <label for="voiceSelect">Voice</label>
+
+            <select id="voiceSelect">
+                <option value="">Loading voices...</option>
+            </select>
+
+            <label for="speedSelect">Speed</label>
+
+            <select id="speedSelect">
+                <option value="0.7">Slow</option>
+                <option value="1" selected>Normal</option>
+                <option value="1.3">Fast</option>
+            </select>
+
+            <div class="buttons">
+                <button onclick="speakStory()">
+                    🔊 Listen to Story
+                </button>
+
+                <button onclick="stopSpeaking()">
+                    ⏹ Stop
+                </button>
+            </div>
+
+        </div>
+
+
+        <!-- Translation Section -->
+        <div class="translation-section">
+
+            <h2>🌐 Translate Your Story</h2>
+
+            <label for="language">
+                Choose Language
+            </label>
+
+            <select id="language">
+
+                <option value="Hindi">
+                    🇮🇳 Hindi
+                </option>
+
+                <option value="Punjabi">
+                    ਪੰਜਾਬੀ Punjabi
+                </option>
+
+            </select>
+
+
+            <!-- Translate Button -->
+            <button onclick="translateStory()">
+                🌐 Translate Story
+            </button>
+
+
+            <!-- Translated Story -->
+            <h2>🌐 Translated Story</h2>
+
+            <div id="translationResult">
+                Your translated story will appear here.
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>
